@@ -1,12 +1,8 @@
 import os
-# NAVSIM_WORKSPACE = os.environ.get('NAVSIM_WORKSPACE', None)
-# os.environ['NAVSIM_CACHE_ROOT'] = f"{NAVSIM_WORKSPACE}/cache"
-# os.environ['OPENSCENE_DATA_ROOT'] = f"{NAVSIM_WORKSPACE}/dataset"
-# os.environ['NUPLAN_MAPS_ROOT'] = f"{NAVSIM_WORKSPACE}/dataset/maps"
-
-os.environ['NAVSIM_CACHE_ROOT'] = f"/high_perf_store4/evad-tech-vla/datasets/navsim/cache"
-os.environ['OPENSCENE_DATA_ROOT'] = f"/high_perf_store4/evad-tech-vla/datasets/navsim/dataset"
-os.environ['NUPLAN_MAPS_ROOT'] = f"/high_perf_store4/evad-tech-vla/datasets/navsim/dataset/maps"
+NAVSIM_WORKSPACE = os.environ.get('NAVSIM_WORKSPACE', None)
+os.environ['NAVSIM_CACHE_ROOT'] = f"{NAVSIM_WORKSPACE}/cache"
+os.environ['OPENSCENE_DATA_ROOT'] = f"{NAVSIM_WORKSPACE}/dataset"
+os.environ['NUPLAN_MAPS_ROOT'] = f"{NAVSIM_WORKSPACE}/dataset/maps"
 
 from typing import Tuple
 import pytorch_lightning as pl
