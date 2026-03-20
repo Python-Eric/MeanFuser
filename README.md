@@ -42,13 +42,14 @@
   - [Download Dataset](#1-download-dataset)
   - [Set Up Configuration](#2-set-up-configuration)
   - [Cache the Dataset](#3-cache-the-dataset)
-- ⚙️ [Training and Evaluation](#-training-and-evaluation)
+- ⚙️ [Training and Evaluation](#%EF%B8%8F-training-and-evaluation)
+  - [Evaluation](#1-evaluation)
+  - [Training](#2-training)
+  - [Visualization](#3-visualization)
 - ⭐ [TODO List](#-todo-list)
-- ❤️ [Acknowledgements](#-acknowledgements)
+- ❤️ [Acknowledgements](#%EF%B8%8F-acknowledgements)
 
 ## Model Zoo
-
-> Results on NAVSIM
 
 | Method | Backbone | Benchmark | PDMS | Weight Download |
 | :---: | :---: | :---:  | :---:  | :---: |
@@ -131,7 +132,7 @@ python scripts/evaluation/run_dataset_cache.sh
 python scripts/evaluation/run_metric_cache.sh
 ```
 
-## ⚙️ Traning and Evaluation
+## ⚙️ Training and Evaluation
 
 ### 1. Evaluation
 Please download the pre-trained checkpoints from [here](https://drive.google.com/drive/folders/1VGzTzvoJkd65aGLn5bp64r86QLrcPxI3?usp=sharing) and place them in the `navsim_workspace/MeanFuser/exp/` directory.
