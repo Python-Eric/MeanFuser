@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://ik.imagekit.io/b4ajawimo/MeanFuser/meanfuser.png?updatedAt=1772107185555" width="800">
+<img src="assets/meanfuser.png" width="800">
 <h1>[🎉CVPR 2026] MeanFuser</h1>
 <h4>Fast One-Step Multi-Modal Trajectory Generation and Adaptive Reconstruction via MeanFlow for End-to-End Autonomous Driving</h4>
 
@@ -30,14 +30,142 @@
 ---
 
 ## 📢 News
+- **`[2025/3/20]`** We released code and [checkpoints](https://arxiv.org/abs/2602.20060).
 - **`[2025/2/25]`** We released our [paper](https://arxiv.org/abs/2602.20060) on arXiv. 
 - **`[2025/2/21]`** 🎉 Accepted to CVPR 2026.
 
 
+## 📌 Table of Contents
+
+- 🎯 [Getting Started](#-getting-started)
+- 📦 [Data Preparation](#-data-preparation)
+  - [Download Dataset](#1-download-dataset)
+  - [Set Up Configuration](#2-set-up-configuration)
+  - [Cache the Dataset](#3-cache-the-dataset)
+- ⚙️ [Training and Evaluation](#-training-and-evaluation)
+- ⭐ [TODO List](#-todo-list)
+- ❤️ [Acknowledgements](#-acknowledgements)
+
+## Model Zoo
+
+> Results on NAVSIM
+
+| Method | Backbone | Benchmark | PDMS | Weight Download |
+| :---: | :---: | :---:  | :---:  | :---: |
+| MeanFuser | [ResNet-34](https://drive.google.com/file/d/1-6mtwHsrZt4TyH4lfFEJTT8_dnnkejAI/view?usp=drive_link) | NAVSIM | 89.0 | [Google Drive](https://drive.google.com/file/d/16989kIYhM3wQgxjSKvRFfK9cdKZfuU2P/view?usp=drive_link) |
+| MeanFuser + [BeyondDrive](https://github.com/wjl2244/BeyondDrive) | [ResNet-34](https://drive.google.com/file/d/1-6mtwHsrZt4TyH4lfFEJTT8_dnnkejAI/view?usp=drive_link) | NAVSIM | 90.3 | [Google Drive](https://drive.google.com/file/d/1ztGNrSHNuxQBQf9HVzyV9lwCHb9B0aKn/view?usp=drive_link) |
+| MeanFuser | [ResNet-34](https://drive.google.com/file/d/1-6mtwHsrZt4TyH4lfFEJTT8_dnnkejAI/view?usp=drive_link) | HUGSIM | - | [Google Drive](https://drive.google.com/file/d/1e0BdvpJHriai4zxKSXGsK7yagcme5QeS/view?usp=drive_link) |
+
+
+## 🎯 Getting Started
+
+### 1. Clone SimScale Repo
+
+```bash
+git clone https://github.com/wjl2244/MeanFuser.git
+cd MeanFuser
+```
+
+### 2. Create Environment
+
+```bash
+conda create -n meanfuser python=3.9 -y
+conda activate meanfuser
+pip install -e .
+```
+
+## 📦 Data Preparation
+**NOTE: Please review and agree to the [LICENSE file](https://motional-nuplan.s3-ap-northeast-1.amazonaws.com/LICENSE) file before downloading the data.**
+
+### 1. Download Dataset
+
+#### a. Download via NAVSIM offical installation.
+Follow the instructions in the [NAVSIM installation guide](https://github.com/autonomousvision/navsim/blob/main/docs/install.md#2-download-the-dataset) to download the dataset.
+
+
+#### b. Download via Hugging Face
+Alternatively, you can download the dataset using Hugging Face with the following commands:
+```bash
+export # Set the Hugging Face endpoint (use the mirror if you are in China)
+export HF_ENDPOINT="https://huggingface.co"
+# export HF_ENDPOINT="http://hf-mirror.com"  # Uncomment this line if you are in China
+
+# Install the huggingface_hub tool
+pip install -U "huggingface_hub"
+
+# Download the OpenScene dataset
+hf download --repo-type dataset OpenDriveLab/OpenScene --local-dir ./navsim_dataset/ --include "openscene-v1.1/*"
+
+# Download the map data
+cd download && ./download_maps.sh
+```
+
+### 2. Set Up Configuration
+Move the download data to create the following structure.
+
+```angular2html
+navsim_workspace/
+├── MeanFuser/
+├── dataset/
+│    ├── maps/
+│    ├── navsim_logs/
+│    │   ├── test/
+│    │   ├── trainval/
+│    ├── sensor_blobs/
+│    │   ├── test/
+│    │   ├── trainval/
+└── cache/
+     ├── navtest_v1_metric_cache/
+     └── traintest_v1_cache/
+```
+
+### 3. Cache the Dataset
+We provide a script to cache the dataset and metrics.
+```bash
+cd MeanFuser
+
+# Cache the dataset.
+python scripts/evaluation/run_dataset_cache.sh
+
+# Cache the metric.
+python scripts/evaluation/run_metric_cache.sh
+```
+
+## ⚙️ Traning and Evaluation
+
+### 1. Evaluation
+Please download the pre-trained checkpoints from [here](https://drive.google.com/drive/folders/1VGzTzvoJkd65aGLn5bp64r86QLrcPxI3?usp=sharing) and place them in the `navsim_workspace/MeanFuser/exp/` directory.
+
+```bash
+cd MeanFuser
+
+bash scripts/evaluation/run_meanfuser_evaluation.sh
+```
+
+### 2. Training
+Please download the ResNet-34 pretrained weights from [here](https://drive.google.com/file/d/1-6mtwHsrZt4TyH4lfFEJTT8_dnnkejAI/view?usp=drive_link). After downloading, update the corresponding path in the configuration file:`navsim_workspace/MeanFuser/navsim/agents/meanfuser/meanfuser_config.py`
+
+```bash
+cd MeanFuser
+
+bash scripts/training/run_meanfuser_training.sh
+```
+
+### 3. Visualization
+We provide a script to visualize the model's planned trajectory.
+
+```bash
+export NAVSIM_WORKSPACE="xxx/navsim_workspace"
+python MeanFuser/tools/visualization_navtest_scenes.py
+```
+
 ## 📋 TODO List
-- [ ] Checkpoints release (Mar. 2026).
-- [ ] Code release (Mar. 2026).
+- [x] Checkpoints release (Mar. 2026).
+- [x] Code release (Mar. 2026).
 - [x] Paper release (Feb. 2026).
 
+## ❤️ Acknowledgements
 
+We acknowledge all the open-source contributors for the following projects to make this work possible:
 
+- [MeanFlow](https://github.com/zhuyu-cs/MeanFlow) | [NAVSIM](https://github.com/autonomousvision/navsim) | [HUGSIM](https://github.com/hyzhou404/NAVSIM) | [GTRS](https://github.com/NVlabs/GTRS)
