@@ -110,7 +110,7 @@ def plot_bev_with_agent(scene, agent, agent_trajectory) -> Tuple[plt.Figure, plt
         ax.add_collection(lc)
     
     poses = np.concatenate([np.array([[0, 0]]), human_trajectory.poses[:8, :2]])
-    ax.plot(
+    human_line = ax.plot(
         poses[:, 1],
         poses[:, 0],
         color='#FF6249',
@@ -118,10 +118,12 @@ def plot_bev_with_agent(scene, agent, agent_trajectory) -> Tuple[plt.Figure, plt
         linewidth=2,
         zorder=4,
         label='Human',
-    )
+    )[0]
+    legend_handles.append(human_line)
+
     configure_bev_ax(ax)
     configure_ax(ax)
-    ax.legend()
+    ax.legend(handles=legend_handles)
     return fig, ax
 
 
