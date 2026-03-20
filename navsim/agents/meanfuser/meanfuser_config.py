@@ -47,9 +47,9 @@ class MeanfuserConfig:
 
     # image encoder architecture
     image_architecture: str = "resnet34"
-    resnet18_ckpt_path: str = "/high_perf_store4/evad-tech-vla/datasets/navsim/dataset/models/resnet18_model.bin"
-    resnet34_ckpt_path: str = "/high_perf_store4/evad-tech-vla/datasets/navsim/dataset/models/resnet34_model.bin"
-    resnet50_ckpt_path: str = "/high_perf_store4/evad-tech-vla/datasets/navsim/dataset/models/resnet50_model.bin"
+    resnet18_ckpt_path: str = "xxx/resnet18_model.bin"
+    resnet34_ckpt_path: str = "xxx/resnet34_model.bin"
+    resnet50_ckpt_path: str = "xxx/resnet50_model.bin"
 
     # lidar encoder architecture
     lidar_architecture: str = "resnet34"
