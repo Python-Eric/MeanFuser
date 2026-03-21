@@ -36,7 +36,8 @@
 
 
 ## 📌 Table of Contents
-
+- 📋 [TODO List](#-todo-list)
+- 🏛️ [Model Zoo](#%EF%B8%8F-model-zoo)
 - 🎯 [Getting Started](#-getting-started)
 - 📦 [Data Preparation](#-data-preparation)
   - [Download Dataset](#1-download-dataset)
@@ -46,10 +47,16 @@
   - [Evaluation](#1-evaluation)
   - [Training](#2-training)
   - [Visualization](#3-visualization)
-- ⭐ [TODO List](#-todo-list)
 - ❤️ [Acknowledgements](#%EF%B8%8F-acknowledgements)
 
-## Model Zoo
+## 📋 TODO List
+- [ ] HUGSIM code release (Apr. 2026).
+- [ ] NAVSIMv2 navtest code release (Apr. 2026).
+- [x] Checkpoints release (Mar. 2026).
+- [x] Code release (Mar. 2026).
+- [x] Paper release (Feb. 2026).
+
+## 🏛️ Model Zoo
 
 | Method | Backbone | Benchmark | PDMS | Weight Download |
 | :---: | :---: | :---:  | :---:  | :---: |
@@ -159,11 +166,6 @@ We provide a script to visualize the model's planned trajectory.
 export NAVSIM_WORKSPACE="xxx/navsim_workspace"
 python MeanFuser/tools/visualization_navtest_scenes.py
 ```
-
-## 📋 TODO List
-- [x] Checkpoints release (Mar. 2026).
-- [x] Code release (Mar. 2026).
-- [x] Paper release (Feb. 2026).
 
 ## ❤️ Acknowledgements
 
