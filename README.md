@@ -67,7 +67,7 @@
 
 ## 🎯 Getting Started
 
-### 1. Clone SimScale Repo
+### 1. Clone MeanFuser Repo
 
 ```bash
 git clone https://github.com/wjl2244/MeanFuser.git
