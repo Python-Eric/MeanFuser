@@ -94,7 +94,6 @@ Follow the instructions in the [NAVSIM installation guide](https://github.com/au
 #### b. Download via Hugging Face
 Alternatively, you can download the dataset using Hugging Face with the following commands:
 ```bash
-export # Set the Hugging Face endpoint (use the mirror if you are in China)
 export HF_ENDPOINT="https://huggingface.co"
 # export HF_ENDPOINT="http://hf-mirror.com"  # Uncomment this line if you are in China
 
@@ -132,7 +131,7 @@ We provide a script to cache the dataset and metrics.
 ```bash
 cd MeanFuser
 
-# Cache the dataset.
+# Cache the dataset. (navtrain and navtest)
 python scripts/evaluation/run_dataset_cache.sh
 
 # Cache the metric.
