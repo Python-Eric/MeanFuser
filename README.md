@@ -30,6 +30,7 @@
 ---
 
 ## 📢 News
+- **`[2026/4/12]`** We released [NAVSIMv2 code](https://github.com/wjl2244/MeanFuser/tree/NAVSIMv2).
 - **`[2026/3/20]`** We released code and [checkpoints](https://arxiv.org/abs/2602.20060).
 - **`[2026/2/25]`** We released our [paper](https://arxiv.org/abs/2602.20060) on arXiv. 
 - **`[2026/2/21]`** 🎉 Accepted to CVPR 2026.
@@ -51,7 +52,7 @@
 
 ## 📋 TODO List
 - [ ] HUGSIM code release (Apr. 2026).
-- [ ] NAVSIMv2 navtest code release (Apr. 2026).
+- [x] NAVSIMv2 navtest code release (Apr. 2026).
 - [x] Checkpoints release (Mar. 2026).
 - [x] Code release (Mar. 2026).
 - [x] Paper release (Feb. 2026).
@@ -132,10 +133,10 @@ We provide a script to cache the dataset and metrics.
 cd MeanFuser
 
 # Cache the dataset. (navtrain and navtest)
-python scripts/evaluation/run_dataset_cache.sh
+bash scripts/evaluation/run_dataset_cache.sh
 
 # Cache the metric.
-python scripts/evaluation/run_metric_cache.sh
+bash scripts/evaluation/run_metric_cache.sh
 ```
 
 ## ⚙️ Training and Evaluation
@@ -146,7 +147,12 @@ Please download the pre-trained checkpoints from [here](https://drive.google.com
 ```bash
 cd MeanFuser
 
+# NAVSIMv1
 bash scripts/evaluation/run_meanfuser_evaluation.sh
+
+# NAVSIMv2, please switch to the NAVSIMv2 branch
+bash scripts/evaluation/run_metric_cache.sh
+bash scripts/evaluation/run_meanfuser_evaluation_one_stage.sh
 ```
 
 ### 2. Training
