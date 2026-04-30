@@ -10,8 +10,8 @@ Pipeline:
   5. Compare with existing navtrain_8_mean_std.pkl
 
 Usage:
-  cd /home/wyh/project/End2end/MeanFuser
-  export OPENSCENE_DATA_ROOT="/home/wyh/project/End2end/dataset"
+  cd /home/xxx/project/End2end/MeanFuser
+  export OPENSCENE_DATA_ROOT="/home/xxx/project/End2end/dataset"
   python tools/gaussian_mixed_noise/generate_gmn.py [--num_clusters 8] [--std 0.1] [--output OUTPUT_PATH]
 """
 
